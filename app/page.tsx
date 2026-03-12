@@ -191,7 +191,7 @@ export default function LandingPage() {
                     >
                       <p className="text-sm text-white/50 text-center mb-4">Calendar Widget Placeholder</p>
                       <div className="grid grid-cols-7 gap-2 text-center text-xs">
-                        {['S','M','T','W','T','F','S'].map(d => <div key={d} className="opacity-50">{d}</div>)}
+                        {['S','M','T','W','T','F','S'].map((d, i) => <div key={i} className="opacity-50">{d}</div>)}
                         {Array.from({length: 14}).map((_, i) => (
                           <button key={i} onClick={() => {showToast(`Selected date ${i+1}`); setIsCalendarOpen(false);}} className="p-2 hover:bg-white/10 rounded-full transition-colors">{i + 1}</button>
                         ))}
