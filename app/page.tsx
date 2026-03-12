@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import { Calendar, ChevronDown, ChevronLeft, Heart, MoreVertical, Play, Search, ArrowUpRight, BookOpen, Users, Award, ArrowRight, Mail, Check } from 'lucide-react';
+import { Calendar, ChevronDown, ChevronLeft, ChevronRight, Heart, MoreVertical, Play, Search, ArrowUpRight, BookOpen, Users, Award, ArrowRight, Mail, Check } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
@@ -187,13 +187,35 @@ export default function LandingPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute top-full mt-2 left-0 bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 min-w-[280px] shadow-xl z-20"
+                      className="absolute top-full mt-2 left-0 bg-[#1A1A1A] border border-white/10 rounded-2xl p-6 min-w-[300px] shadow-xl z-20"
                     >
-                      <p className="text-sm text-white/50 text-center mb-4">Calendar Widget Placeholder</p>
+                      <div className="flex justify-between items-center mb-6">
+                        <button onClick={() => showToast('Previous month')} className="p-1 hover:bg-white/10 rounded-full transition-colors">
+                          <ChevronLeft className="w-4 h-4 text-white/70" />
+                        </button>
+                        <span className="text-sm font-medium">March 2026</span>
+                        <button onClick={() => showToast('Next month')} className="p-1 hover:bg-white/10 rounded-full transition-colors">
+                          <ChevronRight className="w-4 h-4 text-white/70" />
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-7 gap-2 text-center text-xs mb-2">
+                        {['S','M','T','W','T','F','S'].map((d, i) => (
+                          <button key={i} onClick={() => showToast(`Navigate to ${d} column`)} className="opacity-50 hover:opacity-100 hover:bg-white/10 rounded-full py-1 transition-all">
+                            {d}
+                          </button>
+                        ))}
+                      </div>
                       <div className="grid grid-cols-7 gap-2 text-center text-xs">
-                        {['S','M','T','W','T','F','S'].map((d, i) => <div key={i} className="opacity-50">{d}</div>)}
-                        {Array.from({length: 14}).map((_, i) => (
-                          <button key={i} onClick={() => {showToast(`Selected date ${i+1}`); setIsCalendarOpen(false);}} className="p-2 hover:bg-white/10 rounded-full transition-colors">{i + 1}</button>
+                        {/* Empty slots for starting day of the month */}
+                        {Array.from({length: 0}).map((_, i) => <div key={`empty-${i}`} />)}
+                        {Array.from({length: 31}).map((_, i) => (
+                          <button 
+                            key={i} 
+                            onClick={() => {showToast(`Selected March ${i+1}`); setIsCalendarOpen(false);}} 
+                            className={`p-2 rounded-full transition-colors ${i + 1 === 12 ? 'bg-white text-black hover:bg-white/90 font-medium' : 'hover:bg-white/10'}`}
+                          >
+                            {i + 1}
+                          </button>
                         ))}
                       </div>
                     </motion.div>
