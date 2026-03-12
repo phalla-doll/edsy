@@ -1,4 +1,4 @@
-import { Calendar, ChevronDown, ChevronLeft, Heart, MoreVertical, Play, Search, ArrowUpRight } from 'lucide-react';
+import { Calendar, ChevronDown, ChevronLeft, Heart, MoreVertical, Play, Search, ArrowUpRight, BookOpen, Users, Award, ArrowRight, Mail } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -181,7 +181,84 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        {/* Features Section */}
+        <section className="mt-40 border-t border-white/10 pt-24">
+          <div className="flex flex-col lg:flex-row justify-between gap-16">
+            <h2 className="text-[4rem] md:text-[6rem] font-light tracking-tight leading-[0.9] lg:w-1/2">
+              Master<br />your craft
+            </h2>
+            <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-12">
+              <div>
+                <BookOpen className="w-8 h-8 mb-6 opacity-80" />
+                <h4 className="text-xl font-medium mb-4">Structured Learning</h4>
+                <p className="text-white/50 leading-relaxed">Carefully curated paths designed to take you from beginner to expert without the overwhelm.</p>
+              </div>
+              <div>
+                <Users className="w-8 h-8 mb-6 opacity-80" />
+                <h4 className="text-xl font-medium mb-4">Expert Mentorship</h4>
+                <p className="text-white/50 leading-relaxed">Connect with industry leaders who provide real-world insights and personalized feedback.</p>
+              </div>
+              <div>
+                <Award className="w-8 h-8 mb-6 opacity-80" />
+                <h4 className="text-xl font-medium mb-4">Certified Skills</h4>
+                <p className="text-white/50 leading-relaxed">Earn recognized certificates that prove your expertise and help you stand out to employers.</p>
+              </div>
+              <div className="flex flex-col justify-center items-start">
+                <button className="flex items-center gap-2 text-sm font-medium hover:text-white/80 transition-colors group">
+                  Explore all benefits <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="mt-40 bg-[#1A1A1A] rounded-[2rem] p-12 md:p-24 text-center">
+          <p className="text-2xl md:text-4xl font-light leading-relaxed mb-12 max-w-4xl mx-auto">
+            &quot;The structured approach to learning completely changed how I absorb information. It&apos;s not just about watching videos, it&apos;s about actual comprehension.&quot;
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-12 rounded-full overflow-hidden relative">
+              <Image src="https://picsum.photos/seed/portrait/100/100" alt="Student" fill className="object-cover" referrerPolicy="no-referrer" />
+            </div>
+            <div className="text-left">
+              <p className="font-medium">Sarah Jenkins</p>
+              <p className="text-sm text-white/50">Frontend Developer</p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="px-6 md:px-12 lg:px-24 py-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+        <div>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-8 h-[1px] bg-white"></div>
+            <span className="text-2xl font-medium tracking-tight">.edsy</span>
+          </div>
+          <p className="text-sm text-white/50 max-w-xs">
+            A minimalist learning platform designed for focused, structured education.
+          </p>
+        </div>
+        
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 w-full md:w-auto">
+          <div className="flex gap-8 text-sm text-white/50">
+            <Link href="#" className="hover:text-white transition-colors">Twitter</Link>
+            <Link href="#" className="hover:text-white transition-colors">Instagram</Link>
+            <Link href="#" className="hover:text-white transition-colors">LinkedIn</Link>
+          </div>
+          
+          <div className="relative flex items-center w-full sm:w-auto">
+            <Mail className="absolute left-4 w-4 h-4 text-white/40" />
+            <input 
+              type="email" 
+              placeholder="Subscribe to newsletter" 
+              className="w-full sm:w-64 bg-transparent border border-white/20 rounded-full py-3 pl-12 pr-4 text-sm text-white placeholder:text-white/40 focus:outline-none focus:border-white/60 transition-colors"
+            />
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
